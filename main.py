@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 22 22:38:14 2018
-
-@author: SAAD BUTT
 """
 import cv2
 import os
