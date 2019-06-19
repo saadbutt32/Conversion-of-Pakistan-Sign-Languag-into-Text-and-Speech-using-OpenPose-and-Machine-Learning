@@ -15,6 +15,9 @@ import math
 
 
 
+
+    
+
 def populate_db():
     
     """
@@ -103,9 +106,26 @@ def populate_db():
     connection.commit()  
     connection.close()
 
+def create_video_table():
+    connection = sqlite3.connect("db\\main_dataset.db")  
+    crsr = connection.cursor() 
+    
+    sql_command1 = """CREATE TABLE IF NOT EXISTS videoDataset (  
+     id INTEGER PRIMARY KEY,  
+     video VARCHAR(90),
+     label VARCHAR(30)  
+     );"""
+    
+    crsr.execute(sql_command1) 
+    
+    connection.commit()  
+    connection.close()
+    
 def create_table():
     connection = sqlite3.connect("db\\main_dataset.db")  
     crsr = connection.cursor() 
+    
+    
     
     sql_command1 = """CREATE TABLE IF NOT EXISTS rightHandDataset (  
      id INTEGER PRIMARY KEY,  
@@ -159,4 +179,31 @@ def create_table():
     #crsr.execute("DELETE FROM rHand")
     
     # execute the statement 
-    crsr.execute(sql_command1) 
+    crsr.execute(sql_command1)
+    
+    connection.commit()  
+    connection.close()
+    
+    
+ 
+    
+    
+    
+    
+    
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
+    
+    
+    
+    
+    
