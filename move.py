@@ -76,7 +76,7 @@ center to 300x 300y
 def dummy_centerPoints(handRight):
     
     refX = 800
-    refY=800
+    refY=1000
     
     handRightResults = []
     handRightPoints = []

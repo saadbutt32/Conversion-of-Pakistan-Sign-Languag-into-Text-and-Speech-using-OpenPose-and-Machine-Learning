@@ -16,7 +16,7 @@ import os.path
 import math
 from matplotlib import pyplot as plt
 
-label = 'ی‬'
+label = 'ب'
 label = label.strip()
 
 folders = []
@@ -73,7 +73,7 @@ for file in files:
     handRightResults,handRightPoints = move.dummy_centerPoints(Result)            
             
             
-    frame = plot.plot_dataset(handRightPoints) 
+    frame = plot.plot_dataset(handRightPoints,'black') 
     
     
     for x in range(len(frame)):
