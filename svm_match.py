@@ -32,7 +32,7 @@ def match_svm(fileName):
         handRightResults,handRightPoints = move.centerPoints(handPoints)
         
         
-        connection = sqlite3.connect("db\\dataset_saad.db") 
+        connection = sqlite3.connect("db\\main_dataset.db") 
         crsr = connection.cursor()
         
         sql = 'SELECT x1,y1'
