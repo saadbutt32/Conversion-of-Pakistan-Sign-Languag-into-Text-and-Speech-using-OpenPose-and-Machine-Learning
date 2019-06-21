@@ -15,6 +15,21 @@ import msvcrt
 import math
 import svm_match
 
+
+
+from tkinter import Tk
+from tkinter import Label
+
+root = Tk()
+root.geometry("300x300+100+100") #Width x Height
+l = Label(root, text= "‬")
+l.config(font=("Courier", 100))
+l.pack()
+root.update()
+
+
+
+
 import errno, os, stat, shutil
 
 import sys, signal
@@ -73,6 +88,8 @@ while True:
         
         if label != 'no match' and label != 'no confidence' and label != lastLabel:
             lastLabel = label  
+            l[ "text" ]=label
+            root.update()
             print("matched Reference =  (" + label + ")" )
 #            
           
@@ -87,6 +104,10 @@ while True:
         print("null")
     
     
+
+root.mainloop()
+
+
     
 #label,result_points,score = match.match('Keypoints\\'+fileName)
 
