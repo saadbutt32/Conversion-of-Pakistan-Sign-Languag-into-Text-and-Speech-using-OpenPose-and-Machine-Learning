@@ -4,9 +4,12 @@
 import db_helper as dbh
 import helperFunc as helper
 import move
+import scale
+import plot
 
 # system imports
 import cv2
+import math
 import os
 import subprocess
 import json
@@ -131,28 +134,53 @@ for x in range(len(fileNames)):
     
     #  function to remove confidence points
     handPoints = helper.removePoints(handRight)
-    # center to 300x 300y 
-    handRightResults,handRightPoints = move.dummy_centerPoints(handPoints)
+     
+    p1 = [handPoints[0], handPoints[1]]
+    p2 = [handPoints[18], handPoints[19]]
+    distance = math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) )
+    
+    Result,Points = scale.dummy_scalePoints(handPoints,distance)
+   
+    handRightResults,handRightPoints = move.dummy_centerPoints(Result)  
 
     print("input " + fileNames[x])
     
+    frame = plot.plot_dataset(handRightPoints,'black') 
+    
+    
+    for i in range(len(frame)):
+        # change the figure size
+        fig2 = plt.figure(figsize = (20,20)) # create a 5 x 5 figure 
+        ax3 = fig2.add_subplot(111)
+        ax3.imshow(frame[i], interpolation='none')
+        ax3.set_title(fileNames[x])
+        
+        plt.show()
+    
+    '''
+    Depreciated code
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    '''
     # Draw lines
-    for pair in POSE_PAIRS:
-        partA = pair[0]
-        partB = pair[1]
-    
-        if handRightPoints[partA] and handRightPoints[partB]:
-            cv2.line(frame, handRightPoints[partA], handRightPoints[partB], (0, 255, 255), 7)
-            cv2.circle(frame, handRightPoints[partA], 5, (0, 0, 255), thickness=4, lineType=cv2.FILLED)
-            cv2.circle(frame, handRightPoints[partB], 5, (255, 255, 255), thickness=3, lineType=cv2.FILLED)
-    
-    # adjust cv2 colors        
-    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    # plot lines on backdround
-    plt.imshow(frame)
-    plt.show()
-    # reset background
-    frame = cv2.imread(background)
+#    for pair in POSE_PAIRS:
+#        partA = pair[0]
+#        partB = pair[1]
+#    
+#        if handRightPoints[partA] and handRightPoints[partB]:
+#            cv2.line(frame, handRightPoints[partA], handRightPoints[partB], (0, 255, 255), 7)
+#            cv2.circle(frame, handRightPoints[partA], 5, (0, 0, 255), thickness=4, lineType=cv2.FILLED)
+#            cv2.circle(frame, handRightPoints[partB], 5, (255, 255, 255), thickness=3, lineType=cv2.FILLED)
+#    
+#    # adjust cv2 colors        
+#    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+#    # plot lines on backdround
+#    plt.imshow(frame)
+#    plt.show()
+#    # reset background
+#    frame = cv2.imread(background)
+    '''
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    '''
     
     # delete file if user rejects it
     choice = input('do you want to keep it? Y/N: ')

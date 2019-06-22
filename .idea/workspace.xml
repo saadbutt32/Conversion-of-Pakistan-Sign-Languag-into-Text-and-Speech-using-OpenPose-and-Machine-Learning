@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a2e7bad-d423-4147-8853-c419a1726467" name="Default Changelist" comment="color skeleton">
+    <list default="true" id="5a2e7bad-d423-4147-8853-c419a1726467" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svm_match.py" beforeDir="false" afterPath="$PROJECT_DIR$/svm_match.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/capture_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/main_dataset.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/main_dataset.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/capture_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="920">
-              <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+            <state>
+              <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
               <folding>
                 <element signature="e#41#64#0" expanded="true" />
               </folding>
@@ -224,7 +225,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561152337665</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="svm fixed">
+      <created>1561154010603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561154010603</updated>
+    </task>
+    <task id="LOCAL-00006" summary="output in tkinter window">
+      <created>1561157409189</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1561157409189</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -258,7 +273,9 @@
     <MESSAGE value="vidoe dataset preprocessing" />
     <MESSAGE value="evaluate dataset" />
     <MESSAGE value="color skeleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="color skeleton" />
+    <MESSAGE value="svm fixed" />
+    <MESSAGE value="output in tkinter window" />
+    <option name="LAST_COMMIT_MESSAGE" value="output in tkinter window" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/New folder/svm_match.py">
@@ -320,8 +337,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/capture_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+        <state>
+          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
           <folding>
             <element signature="e#41#64#0" expanded="true" />
           </folding>
