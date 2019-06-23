@@ -21,7 +21,7 @@ from tkinter import Tk
 from tkinter import Label
 
 root = Tk()
-root.geometry("300x300+100+100") #Width x Height
+root.geometry("300x300+1600+100") #Width x Height
 l = Label(root, text= "‬")
 l.config(font=("Courier", 100))
 l.pack()
@@ -46,7 +46,7 @@ def handleRemoveReadonly(func, path, exc):
       os.chmod(path, stat.S_IRWXU| stat.S_IRWXG| stat.S_IRWXO) # 0777
       func(path)
   else:
-      raise
+      raise Exception
       
 
 
