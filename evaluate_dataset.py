@@ -16,7 +16,7 @@ import os.path
 import math
 from matplotlib import pyplot as plt
 
-label = 'ب'
+label = 'ء‬'
 label = label.strip()
 
 folders = []

@@ -143,7 +143,7 @@ for x in range(len(fileNames)):
    
     handRightResults,handRightPoints = move.dummy_centerPoints(Result)  
 
-    print("input " + fileNames[x])
+    
     
     frame = plot.plot_dataset(handRightPoints,'black') 
     
@@ -161,6 +161,7 @@ for x in range(len(fileNames)):
     Depreciated code
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     '''
+    #print("input " + fileNames[x])
     # Draw lines
 #    for pair in POSE_PAIRS:
 #        partA = pair[0]
@@ -193,47 +194,51 @@ label = input('Enter label for these files: ')
 # remove whitespaces
 label = label.strip()
 
-
-
-
-"""
-traverse 'dataset' folder ,
-find subfolder matching 'label' ,
-create folder with timestamp in  matched folder , 
-and copy everything from 'Keypoints_temp' to created folder
-"""
-for entry in os.scandir('dataset'):
-    if entry.name == label:
-        # current date and time
-        now = datetime.now()
-        
-        # create folder with timestamp
-        timestamp =  str(datetime.timestamp(now))
-        dir_name = "dataset\\" + entry.name +"\\"+ timestamp
-        try:
-            # Create target Directory
-            os.mkdir(dir_name)
-            print("Directory " , dir_name ,  " Created ") 
-        except FileExistsError:
-            print("Directory " , dir_name ,  " already exists")
+choice = input('do you want to put label = '+label+' ? Y/N: ')
+if choice == 'N' or choice == 'n':
+    # store label
+    label = input('Enter label for these files: ')
+    # remove whitespaces
+    label = label.strip()
+elif choice == 'Y' or choice == 'y':
+    """
+    traverse 'dataset' folder ,
+    find subfolder matching 'label' ,
+    create folder with timestamp in  matched folder , 
+    and copy everything from 'Keypoints_temp' to created folder
+    """
+    for entry in os.scandir('dataset'):
+        if entry.name == label:
+            # current date and time
+            now = datetime.now()
             
-        # copy everything from 'Keypoints_temp' to created folder    
-        copy_tree("Keypoints_temp", "dataset\\" + entry.name + "\\" + timestamp )
-
-
-
-""" 
-Remove 'Keypoints_temp' folder 
-"""
-
-shutil.rmtree("Keypoints_temp", ignore_errors=True, onerror=handleRemoveReadonly)
-print( 'Keypoints_temp folder removed')
-
-
-# create table if not exists
-dbh.create_table()
-# add all records from 'dataset' to 'db\main_databse.db'
-dbh.populate_db()
+            # create folder with timestamp
+            timestamp =  str(datetime.timestamp(now))
+            dir_name = "dataset\\" + entry.name +"\\"+ timestamp
+            try:
+                # Create target Directory
+                os.mkdir(dir_name)
+                print("Directory " , dir_name ,  " Created ") 
+            except FileExistsError:
+                print("Directory " , dir_name ,  " already exists")
+                
+            # copy everything from 'Keypoints_temp' to created folder    
+            copy_tree("Keypoints_temp", "dataset\\" + entry.name + "\\" + timestamp )
+    
+    
+    
+    """ 
+    Remove 'Keypoints_temp' folder 
+    """
+    
+    shutil.rmtree("Keypoints_temp", ignore_errors=True, onerror=handleRemoveReadonly)
+    print( 'Keypoints_temp folder removed')
+    
+    
+    # create table if not exists
+    dbh.create_table()
+    # add all records from 'dataset' to 'db\main_databse.db'
+    dbh.populate_db()
 
 
 
