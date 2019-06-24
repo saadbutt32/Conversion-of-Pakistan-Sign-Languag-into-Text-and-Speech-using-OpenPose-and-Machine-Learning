@@ -15,6 +15,8 @@ import msvcrt
 import math
 import svm_match
 
+from pygame import mixer
+
 
 
 from tkinter import Tk
@@ -90,6 +92,11 @@ while True:
             lastLabel = label  
             l[ "text" ]=label
             root.update()
+            mp3 = "speech\\"+label+".mp3"
+            mixer.init()
+            mixer.music.load(mp3)
+            mixer.music.play()
+            
             print("matched Reference =  (" + label + ")" )
 #            
           
