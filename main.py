@@ -36,7 +36,7 @@ def handleRemoveReadonly(func, path, exc):
       os.chmod(path, stat.S_IRWXU| stat.S_IRWXG| stat.S_IRWXO) # 0777
       func(path)
   else:
-      raise
+      raise Exception
 
 @eel.expose
 def main():
@@ -136,8 +136,7 @@ def main():
 
 eel.start('signdetection.html',size=(1000,600))
 
-
-    
+  
     
     
     
