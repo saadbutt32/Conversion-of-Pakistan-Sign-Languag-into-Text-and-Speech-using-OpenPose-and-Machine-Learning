@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # local imports
@@ -239,7 +240,6 @@ elif choice == 'Y' or choice == 'y':
     dbh.create_table()
     # add all records from 'dataset' to 'db\main_databse.db'
     dbh.populate_db()
-
 
 
 
