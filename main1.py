@@ -13,21 +13,22 @@ import plot
 from matplotlib import pyplot as plt
 import msvcrt
 import math
-import svm_match
+import ann_match
 
 from pygame import mixer
 
+import sys
 
 
 from tkinter import Tk
 from tkinter import Label
 
-root = Tk()
-root.geometry("300x300+1600+100") #Width x Height
-l = Label(root, text= "‬")
-l.config(font=("Courier", 100))
-l.pack()
-root.update()
+#root = Tk()
+#root.geometry("300x300+1600+100") #Width x Height
+#l = Label(root, text= "‬")
+#l.config(font=("Courier", 100))
+#l.pack()
+#root.update()
 
 
 
@@ -83,21 +84,23 @@ while True:
                     
         #background = 'background.png'
         try:
-            label = svm_match.match_svm('Keypoints\\'+fileName) 
+            label = ann_match.match_ann('Keypoints\\'+fileName) 
             #label,result_points,score = match.match('Keypoints\\'+fileName)
         except:
             pass
         
         if label != 'no match' and label != 'no confidence' and label != lastLabel:
             lastLabel = label  
-            l[ "text" ]=label
-            root.update()
+#            l[ "text" ]=label
+#            root.update()
+            print("matched Reference =  (" + label + ")" )
             mp3 = "speech\\"+label+".mp3"
             mixer.init()
             mixer.music.load(mp3)
             mixer.music.play()
             
-            print("matched Reference =  (" + label + ")" )
+            
+            sys.stdout.flush()
 #            
           
 #    except KeyboardInterrupt:
@@ -112,7 +115,7 @@ while True:
     
     
 
-root.mainloop()
+#root.mainloop()
 
 
     

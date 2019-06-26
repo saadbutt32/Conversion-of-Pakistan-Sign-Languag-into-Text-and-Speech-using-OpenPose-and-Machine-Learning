@@ -16,14 +16,14 @@ import os.path
 import math
 from matplotlib import pyplot as plt
 
-label = 'ے‬'
+label = 'ب'
 label = label.strip()
 
 folders = []
 files = []
 fileNames=[]
 
-Dir = 'dataset\\'+label
+Dir = 'temp_old_dataset\\'+label
 
 for entry in os.scandir(Dir):
     if entry.is_dir():
@@ -49,7 +49,7 @@ for entry in os.scandir(Dir):
             fileNames.append(entry.name)
             
 parent = (os.path.dirname(files[1])).split('\\')
-print(parent[0]+"\\"+parent[1]+"\\"+parent[2])            
+#print(parent[0]+"\\"+parent[1]+"\\"+parent[2])            
 count=0
     
 for file in files:

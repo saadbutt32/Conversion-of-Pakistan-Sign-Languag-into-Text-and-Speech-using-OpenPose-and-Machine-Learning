@@ -13,6 +13,7 @@ from sklearn.metrics import f1_score, confusion_matrix, roc_auc_score, precision
 from sklearn.metrics import recall_score, accuracy_score
 from sklearn.preprocessing import normalize
 import matplotlib.pyplot as plt
+from keras.models import load_model
 
 
 # import data
@@ -59,6 +60,8 @@ print("Test set accuracy = ", acc)
 print("Test set loss = ", loss)
 
 model.save("model.h5")
+
+model = load_model("model.h5")
 # predict
 predictions = model.predict(X_test)
 
