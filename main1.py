@@ -12,18 +12,25 @@ from pygame import mixer # for sound
 from tkinter import Tk
 from tkinter import Label
 
+# for error handling
 import errno, stat, shutil
 import sys, signal
 
+
+"""
+Handling Errors While removing temp folders
+"""     
 def signal_handler(signal, frame):
+    # Removing Keypoints Folder
     shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
-    p.kill()
+    os.system("taskkill /f /im  OpenPoseDemo.exe")
     root.destroy()
     print( 'All done')
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
 
+# if folder is read only raise exception
 def handleRemoveReadonly(func, path, exc):
   excvalue = exc[1]
   if func in (os.rmdir, os.remove) and excvalue.errno == errno.EACCES:
@@ -31,7 +38,9 @@ def handleRemoveReadonly(func, path, exc):
       func(path)
   else:
       raise Exception
+      
 
+# Remove temporary folder if exists
 shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
 
 """
@@ -44,12 +53,18 @@ l.config(font=("Courier", 100))
 l.pack()
 root.update()
 
-
+"""
+Starting OpenPoseDemo.exe
+and storing json files to temporary folder [Keypoints] 
+"""
 print('Starting OpenPose')
 os.chdir('openpose')
 p = subprocess.Popen('build\\x64\\Release\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
 os.chdir('..')
 
+"""
+Creating temp folder and initializing with zero padded json file
+"""
 dirName = 'Keypoints'
 fileName = '000000000000_keypoints.json'
  
@@ -61,16 +76,21 @@ try:
 except FileExistsError:
     print("Directory " , dirName ,  " already exists")
 
+
+"""
+Load each .json file from Keypoints folder and
+predict the label 
+"""
+
 lastLabel = ''
 while True:
     try:
-        fileNames = []
+
         for entry in os.scandir('Keypoints'):
             if entry.is_file():
                 if os.path.splitext(entry)[1] == ".json":
-                    fileNames.append(entry.name)
                     fileName = entry.name
-                    
+                   
         try:
             label = ann_match.match_ann('Keypoints\\'+fileName) 
         except:

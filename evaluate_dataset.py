@@ -25,28 +25,7 @@ fileNames=[]
 
 Dir = 'temp_old_dataset\\'+label
 
-for entry in os.scandir(Dir):
-    if entry.is_dir():
-        folders.append(entry.path)
-        for entry1 in os.scandir(entry.path):
-            if entry1.is_dir():
-                folders.append(entry1.path)
-                for entry2 in os.scandir(entry1.path):
-                    if entry2.is_dir():
-                        folders.append(entry2.path)
-                    elif entry2.is_file():
-                        if os.path.splitext(entry2)[1] == ".json":
-                            files.append(entry2.path)
-                            fileNames.append(entry2.name)
-                            
-            elif entry1.is_file():
-                if os.path.splitext(entry1)[1] == ".json":
-                    files.append(entry1.path)
-                    fileNames.append(entry1.name)
-    elif entry.is_file():
-        if os.path.splitext(entry)[1] == ".json":
-            files.append(entry.path)
-            fileNames.append(entry.name)
+files,fileNames,folders = helper.json_files(Dir)
             
 parent = (os.path.dirname(files[1])).split('\\')
 #print(parent[0]+"\\"+parent[1]+"\\"+parent[2])            

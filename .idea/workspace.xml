@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5a2e7bad-d423-4147-8853-c419a1726467" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ا/1560784628.210554/000000000012_keypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ا/1560784628.210554/000000000012_keypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/capture_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluate_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helperFunc.py" beforeDir="false" afterPath="$PROJECT_DIR$/helperFunc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main1.py" beforeDir="false" afterPath="$PROJECT_DIR$/main1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/capture_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
+            <state relative-caret-position="4560">
               <caret line="247" selection-start-line="247" selection-end-line="247" />
-              <folding>
-                <element signature="e#54#77#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -29,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="460">
               <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding>
                 <element signature="e#80#89#0" expanded="true" />
@@ -41,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/evaluate_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+            <state relative-caret-position="220">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#85#96#0" expanded="true" />
               </folding>
@@ -53,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="180">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -75,9 +74,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -85,7 +84,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -97,6 +95,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,12 +332,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561588092189</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="main cleaned">
+      <created>1561649716562</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1561649716562</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16259088" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -385,86 +390,28 @@
     <MESSAGE value="added text to speech" />
     <MESSAGE value="rearranged dynamic sign detection files" />
     <MESSAGE value="old datasets processing and ann working" />
-    <option name="LAST_COMMIT_MESSAGE" value="old datasets processing and ann working" />
+    <MESSAGE value="main cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="main cleaned" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/New folder/svm_match.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/afffine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1360">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Keypoint problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1973" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/matching_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-696">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding>
-            <element signature="e#89#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_skeleton.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#89#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset_from_videos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="33" column="4" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-          <folding>
-            <element signature="e#27#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json_to_numpy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#124#138#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/New folder/svm_match.py" />
+    <entry file="file://$PROJECT_DIR$/afffine.py" />
+    <entry file="file://$PROJECT_DIR$/Keypoint problem.py" />
+    <entry file="file://$PROJECT_DIR$/matching_test.py" />
+    <entry file="file://$PROJECT_DIR$/plot_skeleton.py" />
+    <entry file="file://$PROJECT_DIR$/dataset.py" />
+    <entry file="file://$PROJECT_DIR$/dataset_from_videos.py" />
+    <entry file="file://$PROJECT_DIR$/json_to_numpy.py" />
     <entry file="file://$PROJECT_DIR$/capture_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
+        <state relative-caret-position="4560">
           <caret line="247" selection-start-line="247" selection-end-line="247" />
-          <folding>
-            <element signature="e#54#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="460">
           <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding>
             <element signature="e#80#89#0" expanded="true" />
@@ -472,10 +419,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/evaluate_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+        <state relative-caret-position="220">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#85#96#0" expanded="true" />
           </folding>

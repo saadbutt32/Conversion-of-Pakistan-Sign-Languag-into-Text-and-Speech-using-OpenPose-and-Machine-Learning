@@ -151,7 +151,7 @@ for x in range(len(fileNames)):
     
     for i in range(len(frame)):
         # change the figure size
-        fig2 = plt.figure(figsize = (20,20)) # create a 5 x 5 figure 
+        fig2 = plt.figure(figsize = (20,20)) # create a 20 x 20 figure 
         ax3 = fig2.add_subplot(111)
         ax3.imshow(frame[i], interpolation='none')
         ax3.set_title(fileNames[x])
