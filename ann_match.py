@@ -37,7 +37,7 @@ def match_ann(fileName):
     
     confPoints = helper.confidencePoints(handRight)
     confidence = helper.confidence(confPoints)
-    if confidence > 10.4:
+    if confidence > 12:
         handPoints = helper.removePoints(handRight)
         
         handRightResults,handRightPoints = move.centerPoints(handPoints)

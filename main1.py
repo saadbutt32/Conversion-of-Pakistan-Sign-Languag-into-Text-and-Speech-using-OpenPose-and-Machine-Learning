@@ -6,6 +6,7 @@ Created on Thu Nov 22 22:38:14 2018
 import os
 import subprocess
 import ann_match
+import time
 
 from pygame import mixer # for sound
 
@@ -84,6 +85,7 @@ predict the label
 
 lastLabel = ''
 while True:
+    time.sleep(0.5)
     try:
 
         for entry in os.scandir('Keypoints'):
