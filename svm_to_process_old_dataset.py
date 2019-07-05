@@ -3,25 +3,10 @@
 Created on Thu Jun 27 01:36:42 2019
 
 """
-# local imports
-import db_helper as dbh
-import helperFunc as helper
+
 import svm_match
-
-# system imports
-import cv2
-import math
 import os
-import subprocess
-import json
-from matplotlib import pyplot as plt
-import time
-from datetime import datetime
-
-# for error handling
-import errno, stat, shutil
-from distutils.dir_util import copy_tree
-import sys, signal
+import shutil
 
 
 

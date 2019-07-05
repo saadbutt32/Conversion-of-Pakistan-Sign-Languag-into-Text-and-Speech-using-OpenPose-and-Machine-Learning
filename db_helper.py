@@ -11,12 +11,7 @@ import os
 import json 
 import os.path
 import math
-
-
-
-
-
-    
+  
 
 def populate_db():
     

@@ -83,7 +83,10 @@ except FileExistsError:
     print("Directory " , dirName ,  " already exists")
 
 
-
+"""
+Load each .json file from Keypoints folder and
+predict the label 
+"""
 def match():
     label=''
     lastLabel = ''
@@ -108,12 +111,6 @@ def match():
         return label
         
         
-
-
-"""
-Load each .json file from Keypoints folder and
-predict the label 
-"""
 
 label=""
 while True:

@@ -3,19 +3,14 @@
 Created on Wed Jul  3 03:44:00 2019
 
 """
-import os
-import subprocess
-import helperFunc as helper
-from tkinter import Tk
-from tkinter import Label
-import time
 import ann_match
 
+import os
+import subprocess
+from tkinter import Label
 import tkinter
 import cv2
 import PIL.Image, PIL.ImageTk
-
-from tkinter import *
 
 # for error handling
 import errno, stat, shutil
@@ -47,24 +42,37 @@ def handleRemoveReadonly(func, path, exc):
 # Remove temporary folder if exists
 shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
 
+"""
+helper functions
+"""
 def waithere():
-    var = IntVar()
+    var = tkinter.IntVar()
     window.after(2000, var.set, 1)
     print("waiting...")
     window.wait_variable(var)
 
+skip_sign = False
+def skip():
+    global skip_sign
+    skip_sign = True
+
+"""
+labels and image files
+"""
 labels = ['ا','ب','پ','ت‬','ٹ‬','ث‬','ج‬','چ‬','ح‬','خ‬','د‬','ڈ‬','ذ‬','ر‬','ڑ‬','ز‬','ژ‬','س‬','ش‬','ص‬','ض‬','ط‬','ظ‬','ع‬','غ‬','ف‬','ق‬','ک‬','گ‬','ل‬','م‬','و‬','ء‬','ہ‬','ی‬','ے‬']
-# Create a window
-window = tkinter.Tk()
-window.title("Learn Sign Language")
+
 fileNames=[]
-
 Dir = 'learn'
-
 for entry in os.scandir(Dir):
     if entry.is_file():
             fileNames.append(entry.path)
 
+
+"""
+Creating a window
+"""
+window = tkinter.Tk()
+window.title("Learn Sign Language")
 
 s = Label(window, text= "")
 s.config(font=("Courier", 20))
@@ -77,11 +85,6 @@ canvas.pack()
 l = Label(window, text= "")
 l.config(font=("Courier", 20))
 l.pack()
-
-skip_sign = False
-def skip():
-    global skip_sign
-    skip_sign = True
 
 B = tkinter.Button(window, text ="Skip", command = skip)
 B.pack()
@@ -113,10 +116,11 @@ except FileExistsError:
 
 label=''       
 for x in range(len(fileNames)):
+    
     skip_sign=False
+    
     # Load an image using OpenCV
     cv_img = cv2.cvtColor(cv2.imread("learn\\"+str(x+1)+".png"), cv2.COLOR_BGR2RGB)
-    
     
     # Get the image dimensions (OpenCV stores image data as NumPy ndarray)
     height, width, no_channels = cv_img.shape
@@ -133,6 +137,7 @@ for x in range(len(fileNames)):
     # Add a PhotoImage to the Canvas
     canvas.create_image(0, 0, image=photo, anchor=tkinter.NW)
     window.update()
+    
     count=0
     while label!=labels[x]:
         if skip_sign==True:

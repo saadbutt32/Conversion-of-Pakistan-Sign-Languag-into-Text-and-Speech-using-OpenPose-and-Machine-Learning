@@ -84,8 +84,37 @@ def confidence(handRight):
     return sum
 
 
-
+def seperate_points(handRight):
+    handRightResults = []
+    handRightX = []
+    handRightY = []
     
+    for x in range(len(handRight)): 
+        handRightX.append(handRight[x][0]) 
+        handRightY.append(handRight[x][1])
+    
+    for x in range(len(handRight)): 
+        handRightResults.append(handRightX[x])
+        handRightResults.append(handRightY[x])
+
+    return handRightResults
+
+def join_points(handRight):
+    handRightPoints = []
+    handRightX = []
+    handRightY = []
+    
+    for x in range(0,len(handRight),2): 
+        handRightX.append(handRight[x])
+    for x in range(1,len(handRight),2): 
+        handRightY.append(handRight[x])
+    
+    for x in range(len(handRightX)): 
+       handRightPoints.append((int(handRightX[x]) , int(handRightY[x]))) 
+
+    return handRightPoints
+    
+ 
     
 
 
