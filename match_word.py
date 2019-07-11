@@ -4,12 +4,6 @@ Created on Wed Jul 10 16:22:06 2019
 
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 28 15:09:28 2019
-
-"""
-
 import move
 import helperFunc as helper
 import scale

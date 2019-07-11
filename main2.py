@@ -10,7 +10,7 @@ Created on Thu Nov 22 22:38:14 2018
 
 import os
 import subprocess
-import svm_match
+import ann_match
 
 from pygame import mixer # for sound
 
@@ -52,7 +52,7 @@ and storing json files to temporary folder [Keypoints]
 """
 print('Starting OpenPose')
 os.chdir('openpose')
-p = subprocess.Popen('bin\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
+p = subprocess.Popen('build\\x64\\Release\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
 os.chdir('..')
 
 """
@@ -83,7 +83,7 @@ def match():
             if os.path.splitext(entry)[1] == ".json":
                 fileName = entry.name     
     try:
-       label = svm_match.match_svm('Keypoints\\'+fileName)
+       label = ann_match.match_ann('Keypoints\\'+fileName)
     except:
         pass
     
