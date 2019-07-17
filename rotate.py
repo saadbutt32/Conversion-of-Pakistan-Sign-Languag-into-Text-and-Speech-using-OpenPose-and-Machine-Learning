@@ -33,7 +33,7 @@ def rotate(point, angle, center_point=(0, 0)):
 
 
 def rotate_file(fileName):
-    js = json.loads(open("alif.json").read())
+    js = json.loads(open(fileName).read())
     for items in js['people']:
         handRight = items["hand_right_keypoints_2d"]
     
@@ -67,7 +67,18 @@ def rotate_points(points,angle):
 
 
 
+def rotate_line(origin, point, angle):
+    """
+    Rotate a point counterclockwise by a given angle around a given origin.
 
+    The angle should be given in radians.
+    """
+    ox, oy = origin
+    px, py = point
+
+    qx = ox + math.cos(angle) * (px - ox) - math.sin(angle) * (py - oy)
+    qy = oy + math.sin(angle) * (px - ox) + math.cos(angle) * (py - oy)
+    return qx, qy
 
 
 

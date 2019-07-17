@@ -51,7 +51,7 @@ shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
 Tkinter window
 """
 root = Tk()
-root.geometry("300x300+1600+100") #Width x Height
+root.geometry("600x600+1200+100") #Width x Height
 l = Label(root, text= "‬")
 l.config(font=("Courier", 100))
 l.pack()

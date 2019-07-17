@@ -115,7 +115,7 @@ def populate_words():
     connection.commit()  
     connection.close()
     
-    
+    print("records deleted, new records will be entered now")
     
     folders = []
     files = []
