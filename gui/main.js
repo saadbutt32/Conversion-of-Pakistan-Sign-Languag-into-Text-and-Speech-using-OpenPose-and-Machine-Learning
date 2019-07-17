@@ -1,5 +1,5 @@
 function startDetection()
 {
-    let aplhabet = eel.main();
-    alert(aplhabet);
+    let alphabet = eel.prnt();
+    document.getElementById('label').innerHTML = alphabet;
 }

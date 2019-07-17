@@ -23,7 +23,7 @@ from keras.utils import to_categorical
 from keras.models import load_model
 
 
-model = load_model("new_model.h5")
+model = load_model("ann_model.h5")
 print("model loaded")
 
 

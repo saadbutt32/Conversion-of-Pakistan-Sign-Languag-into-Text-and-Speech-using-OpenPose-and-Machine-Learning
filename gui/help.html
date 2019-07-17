@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="#" />
     <script type="text/javascript" src="/eel.js"></script>
 
-    <style>
+     <style>
         img {
           opacity: 0;
           filter: alpha(opacity=0);
@@ -31,32 +31,7 @@
                         <p>Detect Hand Sign Language using Simple RGB Camera</p>
                     </div>
                     <div class="get-start-area">
-                        <form class="form-inline">
-                            <input type="button" class="submit" value="Start OpenPose" onclick="startOpenpose()">
-                            <input type="button" class="submit" value="Start Detection" onclick="startDetection()">
-                            <br>
-                            <br>
-                            <h1>Alphabets</h1>
-                            <br>
-                            <textarea rows="4" cols="50" id="label">
-                            
-                            </textarea>
-                        </form>
-                        <script type="text/javascript">                                
-                                async function startDetection(){
-                                let val = await eel.match()();
-                                console.log(val);
-                                var par = document.getElementById("label");
-                                par.innerHTML = val ;
-                                setTimeout(startDetection, 1000);
-                                }
 
-                                function startOpenpose()
-                                {
-                                    eel.openpose()();
-                                }
-
-                        </script>
                     </div>
                 </div>
             </div>
