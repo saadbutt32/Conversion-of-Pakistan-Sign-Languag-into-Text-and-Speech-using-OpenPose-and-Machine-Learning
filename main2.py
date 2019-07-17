@@ -46,36 +46,39 @@ def handleRemoveReadonly(func, path, exc):
 # Remove temporary folder if exists
 shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
 
-"""
-Starting OpenPoseDemo.exe
-and storing json files to temporary folder [Keypoints] 
-"""
-print('Starting OpenPose')
-os.chdir('openpose')
-p = subprocess.Popen('bin\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
-os.chdir('..')
+@eel.expose
+def openpose():
+    """
+    Starting OpenPoseDemo.exe
+    and storing json files to temporary folder [Keypoints] 
+    """
+    print('Starting OpenPose')
+    os.chdir('openpose')
+    p = subprocess.Popen('bin\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
+    os.chdir('..')
+    
+    """
+    Creating temp folder and initializing with zero padded json file
+    """
+    dirName = 'Keypoints'
+    fileName = '000000000000_keypoints.json'
+     
+    try:
+        # Create target Directory
+        os.mkdir(dirName)
+        shutil.copy(fileName, dirName)
+        print("Directory " , dirName ,  " Created ") 
+    except FileExistsError:
+        print("Directory " , dirName ,  " already exists")
+    
 
-"""
-Creating temp folder and initializing with zero padded json file
-"""
-dirName = 'Keypoints'
-fileName = '000000000000_keypoints.json'
- 
-try:
-    # Create target Directory
-    os.mkdir(dirName)
-    shutil.copy(fileName, dirName)
-    print("Directory " , dirName ,  " Created ") 
-except FileExistsError:
-    print("Directory " , dirName ,  " already exists")
-
-
-"""
-Load each .json file from Keypoints folder and
-predict the label 
-"""
 @eel.expose
 def match():
+    
+    """
+    Load each .json file from Keypoints folder and
+    predict the label 
+    """
     label=''
     lastLabel = ''
     for entry in os.scandir('Keypoints'):
@@ -97,7 +100,7 @@ def match():
         return label
         
 
-eel.start('sign.html',size=(1000,600))        
+eel.start('main.html',size=(1000,600))
 
 label=""
 while True:

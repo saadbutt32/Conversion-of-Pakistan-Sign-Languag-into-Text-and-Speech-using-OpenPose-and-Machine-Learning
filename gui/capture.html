@@ -8,9 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Pakistan Sign Laguage Interpreter</title>
     <link href="style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
     <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="main.js"></script>
 
+     <style>
+        img {
+          opacity: 0;
+          filter: alpha(opacity=0);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,14 +25,13 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12 col-md">
                     <div class="wellcome-heading">
-                        <h2>Sign Detection</h2>
+                        <h2>Sign Detection <img src="images/recog.png" width="650" height="50">
+                        <a href="main.html"><input type="image" src="images/back.png" alt="Submit"  hspace="20" width="80" height="75"></a></h2>
                         <h3>Sign Language</h3>
                         <p>Detect Hand Sign Language using Simple RGB Camera</p>
                     </div>
                     <div class="get-start-area">
-                        <form class="form-inline">
-                            <input type="button" class="submit" value="Start Detection" onclick="startDetection()">
-                        </form>
+
                     </div>
                 </div>
             </div>

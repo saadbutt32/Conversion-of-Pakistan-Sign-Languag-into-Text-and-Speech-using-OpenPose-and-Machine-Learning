@@ -95,7 +95,7 @@ and storing json files to temporary folder [Keypoints]
 """
 print('Starting OpenPose')
 os.chdir('openpose')
-p = subprocess.Popen('build\\x64\\Release\\OpenPoseDemo.exe --display 0 --render_pose 0 --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
+p = subprocess.Popen('bin\\OpenPoseDemo.exe --display 0 --render_pose 0 --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
 os.chdir('..')
 
 """
