@@ -14,6 +14,7 @@ import os
 import normalize as norm
 
 from matplotlib import pyplot as plt
+import matplotlib.pyplot as mpld3
 
 
 #POSE_PAIRS = [ [1,0],[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],
@@ -281,7 +282,7 @@ def plotPoseDataset():
         ax3.imshow(frame, interpolation='none')
         
         plt.imshow(frame)
-        plt.show()
+        mpld3.show()
 
 
 
