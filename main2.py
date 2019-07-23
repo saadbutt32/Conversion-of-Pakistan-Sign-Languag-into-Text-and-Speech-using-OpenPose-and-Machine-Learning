@@ -18,11 +18,15 @@ from pygame import mixer # for sound
 import errno, stat, shutil
 import sys, signal
 import eel
+import learn
 
 """
 Handling Errors While removing temp folders
 """     
 eel.init("gui")
+
+
+
 
 def signal_handler(signal, frame):
     # Removing Keypoints Folder
@@ -46,6 +50,8 @@ def handleRemoveReadonly(func, path, exc):
 # Remove temporary folder if exists
 shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
 
+
+
 @eel.expose
 def openpose():
     """
@@ -62,7 +68,8 @@ def openpose():
     """
     dirName = 'Keypoints'
     fileName = '000000000000_keypoints.json'
-     
+
+    from dask.compatibility import FileExistsError
     try:
         # Create target Directory
         os.mkdir(dirName)
