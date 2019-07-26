@@ -33,37 +33,57 @@
                     <div class="get-start-area">
                        <img src="images/recog.png" width="550" height="50"><input type="button" class="submit" value="Start learning" onclick="startLearning()">
                         <br>
-                           <img src="images/recog.png" width="400" height="50"> <input type="image" id="alphabet" src="../Learn_images/000000000000_rendered.png" alt="Submit"  hspace="200" width="700" height="450">
-                           <p><img src="images/recog.png" width="600" height="50"> GOOD</p>
-                        <img src="images/recog.png" width="550" height="50">
-                            <input type="button" class="submit" value="Skip" onclick="changeImage()"> <br>
+                           <img src="images/recog.png" width="400" height="50"> <input type="image" id="alphabet" src="Learn_images/background.png" alt="Submit"  hspace="200" width="700" height="450">
+                           <img src="images/recog.png" width="600" height="50"><input type="image" id="status" src="images/bad.png" alt="Submit"  hspace="200" width="100" height="100">
+                        <br><img src="images/recog.png" width="550" height="50">
+                            <input type="button" class="submit" value="Next Sign" onclick="changeImage()"> <br>
                         <script type="text/javascript">
 
                                 async function startLearning(){
                                 let val = await eel.learning()();
-                                console.log(val);
-                                var par = document.getElementById("label");
-                                par.innerHTML = val ;
+                                if(console.log(val) == True)
+                                {
+                                   document.getElementById("status").src="/images/good.png";
+                                }
                                 setTimeout(startDetection, 1000);
                                 }
 
                                 var i = 0;
+                                var image = new Image();
+
                                 function changeImage()
                                 {
                                    if(i<10)
                                    {
-                                   document.getElementById("alphabet").src="../Learn_images/00000000000"+(i)+"_rendered.png";
-                                   }
-                                   if(i>=10)
-                                   {
-                                     document.getElementById("alphabet").src="../Learn_images/0000000000"+(i)+"_rendered.png";
-                                   }
-                                   if(i>=100)
-                                   {
-                                     document.getElementById("alphabet").src="../Learn_images/000000000"+(i)+"_rendered.png";
+                                    image.src = "Learn_images/00000000000"+(i)+"_rendered.png";
+                                    console.log(i);
+                                        if(image.width != 0)
+                                        {
+                                            document.getElementById("alphabet").src="Learn_images/00000000000"+(i)+"_rendered.png";
+                                            i++;
+                                        }
                                    }
 
-                                   i++;
+                                   if(i>=10)
+                                   {
+                                    image.src = "Learn_images/0000000000"+(i)+"_rendered.png";
+                                     if(image.width != 0)
+                                        {
+                                            document.getElementById("alphabet").src="/Learn_images/0000000000"+(i)+"_rendered.png";
+                                            i++;
+                                        }
+                                   }
+
+                                   if(i>=100)
+                                   {
+                                     image.src = "Learn_images/000000000"+(i)+"_rendered.png";
+                                     if(image.width != 0)
+                                        {
+                                             document.getElementById("alphabet").src="/Learn_images/000000000"+(i)+"_rendered.png";
+                                             i++;
+                                        }
+                                   }
+                                   setTimeout(changeImage, 500);
                                 }
                         </script>
                     </div>

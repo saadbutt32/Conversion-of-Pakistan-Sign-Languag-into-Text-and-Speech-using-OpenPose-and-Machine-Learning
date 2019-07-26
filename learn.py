@@ -167,7 +167,7 @@ def learning():
                 try:
                     label = ann_match.match_ann('Keypoints\\'+fileName)
                 except:
-                    pass
+                    return True
 
                 if count==1000:
                     count=0
