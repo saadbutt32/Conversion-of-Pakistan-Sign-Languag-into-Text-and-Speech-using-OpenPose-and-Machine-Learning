@@ -33,11 +33,12 @@
                     <div class="get-start-area">
                        <img src="images/recog.png" width="550" height="50"><input type="button" class="submit" value="Start learning" onclick="startLearning()">
                         <br>
-                           <img src="images/recog.png" width="400" height="50"> <input type="image" id="alphabet" src="images/alphabets/1.png" alt="Submit"  hspace="200" width="700" height="450">
+                           <img src="images/recog.png" width="400" height="50"> <input type="image" id="alphabet" src="../Learn_images/000000000000_rendered.png" alt="Submit"  hspace="200" width="700" height="450">
                            <p><img src="images/recog.png" width="600" height="50"> GOOD</p>
                         <img src="images/recog.png" width="550" height="50">
-                            <input type="button" class="submit" value="Skip" onclick="setImage()"> <br>
+                            <input type="button" class="submit" value="Skip" onclick="changeImage()"> <br>
                         <script type="text/javascript">
+
                                 async function startLearning(){
                                 let val = await eel.learning()();
                                 console.log(val);
@@ -46,18 +47,23 @@
                                 setTimeout(startDetection, 1000);
                                 }
 
-                                 function setImage()
+                                var i = 0;
+                                function changeImage()
                                 {
-                                    var imageSrc = document.getElementById("alphabet").getAttribute("src");
-                                    var currentImageNumber = imageSrc.substring(imageSrc.lastIndexOf("/") + 1, imageSrc.lastIndexOf("/") + 3);
-                                    if(currentImageNumber == 36)
-                                    {
-                                        currentImageNumber = 0;
-                                    }
-                                    currentImageNumber++;
-                                    console.log(currentImageNumber);
-                                    document.getElementById("alphabet").setAttribute("src", "images/alphabets/" + currentImageNumber + ".png");
+                                   if(i<10)
+                                   {
+                                   document.getElementById("alphabet").src="../Learn_images/00000000000"+(i)+"_rendered.png";
+                                   }
+                                   if(i>=10)
+                                   {
+                                     document.getElementById("alphabet").src="../Learn_images/0000000000"+(i)+"_rendered.png";
+                                   }
+                                   if(i>=100)
+                                   {
+                                     document.getElementById("alphabet").src="../Learn_images/000000000"+(i)+"_rendered.png";
+                                   }
 
+                                   i++;
                                 }
                         </script>
                     </div>

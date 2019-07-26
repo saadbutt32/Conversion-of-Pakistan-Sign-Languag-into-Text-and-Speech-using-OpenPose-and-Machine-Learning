@@ -4,13 +4,19 @@ Created on Wed Jul  3 03:44:00 2019
 
 """
 
+# local imports
+import helperFunc as helper
+import move
+import scale
+import plot
 
 import ann_match
 
 import os
 import subprocess
-#from tkinter import Label
-#import tkinter
+import json
+import math
+from matplotlib import pyplot as plt
 import cv2
 import PIL.Image, PIL.ImageTk
 
@@ -44,6 +50,7 @@ def handleRemoveReadonly(func, path, exc):
 
 # Remove temporary folder if exists
 shutil.rmtree("Keypoints", ignore_errors=True, onerror=handleRemoveReadonly)
+shutil.rmtree("\\gui\\Learn_images", ignore_errors=True, onerror=handleRemoveReadonly)
 
 """
 helper functions
@@ -102,7 +109,7 @@ def learning():
     """
     print('Starting OpenPose')
     os.chdir('openpose')
-    p = subprocess.Popen('bin\\OpenPoseDemo.exe --display 0 --render_pose 0 --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
+    p = subprocess.Popen('bin\\OpenPoseDemo.exe --display 0 --render_pose 0 --hand  --write_json ..\\Keypoints --net_resolution 128x128 --write_images ..\\gui\\Learn_images  --number_people_max 1', shell=True)
     os.chdir('..')
 
     """
@@ -141,7 +148,7 @@ def learning():
 
 
         # Use PIL (Pillow) to convert the NumPy ndarray to a PhotoImage
-        photo = PIL.ImageTk.PhotoImage( image = PIL.Image.fromarray(cv_img))
+        #photo = PIL.ImageTk.PhotoImage( image = PIL.Image.fromarray(cv_img))
         # Add a PhotoImage to the Canvas
         #canvas.create_image(0, 0, image=photo, anchor=tkinter.NW)
         #window.update()
@@ -177,22 +184,3 @@ def learning():
 
 # Run the window loop
 #window.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
