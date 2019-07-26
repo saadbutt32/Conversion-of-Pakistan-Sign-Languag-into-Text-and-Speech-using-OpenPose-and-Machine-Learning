@@ -14,6 +14,7 @@ import os
 import normalize as norm
 
 from matplotlib import pyplot as plt
+import matplotlib.pyplot as mpld3
 
 
 #POSE_PAIRS = [ [1,0],[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],
@@ -157,12 +158,135 @@ def plotPose(posePoints,handRightPoints,handLeftPoints):
 #plt.show()
 
 
+import numpy as np
+def plotPoseDataset():
+    POSE_PAIRS = [ [1,0],[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],
+              [1,8],[0,9],[9,11],[0,10],[10,12]]
+
+    HAND_PAIRS = [ [0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,9],[9,10],
+                  [10,11],[11,12],[0,13],[13,14],[14,15],[15,16],[0,17],[17,18],
+                  [18,19],[19,20] ]
+    
+    colors = [ [0, 0, 130], [0, 0, 175],[0,0, 210],[0, 0, 250] , 
+              [0,200,160], [0,180,150],[0,230,186],[0,255,255],
+                 [82,201,8], [82,204,0], [92,230,0], [102,252,6], 
+                 [197,88,17], [204,82,0],[179,71,0],[227,94,5],
+                 [204,0,163], [200,0,163], [196,0,163], [230,0,184]]
+    
+    
+    """
+    extracting data from db
+    """
+    connection = sqlite3.connect("db\\main_dataset.db") 
+    crsr = connection.cursor()
+    
+    # extracting x and y points
+    sql = 'SELECT Rx1,Ry1'
+    for x in range(2,22):
+        sql = sql + ',Rx'+str(x)+',Ry'+str(x)
+    for x in range(1,22):
+        sql = sql + ',Lx'+str(x)+',Ly'+str(x)
+    for x in range(1,14):
+        sql = sql + ',Px'+str(x)+',Py'+str(x)
+    sql = sql + ' FROM poseDataset WHERE 1'
+    crsr.execute(sql)
+    feature_res = crsr.fetchall()
+    feature_res = np.asarray(feature_res)
+    features=[]
+    for x in feature_res:
+        features.append(x)
+    
+    print(features[0][22])
+    
+    for i in range(len(features)):
+        posePoints = []
+        for x in range(84,110,2):
+            posePoints.append((int(features[i][x]) , int(features[i][x+1])))
+            
+        handRightPoints = []
+        for x in range(0,42,2):
+            handRightPoints.append((int(features[i][x]) , int(features[i][x+1])))
+        
+        handLeftPoints = []
+        for x in range(0,42,2):
+            handLeftPoints.append((int(features[i][x]) , int(features[i][x+1])))
+        
+        color="black"
+        color = color.capitalize()
+        
+        background = color+'_background.jpg'
+            
+        frame = cv2.imread(background)
+        
+        count=0
+        # Draw Skeleton
+        for pair in POSE_PAIRS:
+            partA = pair[0]
+            partB = pair[1]
+        
+            if posePoints[partA] and posePoints[partB] and posePoints[partA][0]!=0 and posePoints[partA][1]!=0 and posePoints[partB][0]!=0 and posePoints[partB][1]!=0 :
+                
+                if color == 'White':
+                    cv2.line(frame, posePoints[partA], posePoints[partB], colors[count], 10)
+                    cv2.circle(frame, posePoints[partA], 5, colors[count], thickness=10, lineType=cv2.FILLED)
+                    cv2.circle(frame, posePoints[partB], 15, (0,0,0), thickness=5, lineType=-1)
+                    
+                else:
+                    cv2.line(frame, posePoints[partA], posePoints[partB], colors[count], 10)
+                    cv2.circle(frame, posePoints[partA], 5, (0, 0, 255), thickness=10, lineType=cv2.FILLED)
+                    cv2.circle(frame, posePoints[partB], 5, (255, 255, 255), thickness=15, lineType=cv2.FILLED)
+                count+=1
+        
+        count=0
+        for pair in HAND_PAIRS:
+            partA = pair[0]
+            partB = pair[1]
+        
+            if handRightPoints[partA] and handRightPoints[partB]:
+                
+                if color == 'White':
+                    cv2.line(frame, handRightPoints[partA], handRightPoints[partB], colors[count], 10)
+                    cv2.circle(frame, handRightPoints[partA], 5, colors[count], thickness=10, lineType=cv2.FILLED)
+                    cv2.circle(frame, handRightPoints[partB], 15, (0,0,0), thickness=5, lineType=-1)
+                    
+                else:
+                    cv2.line(frame, handRightPoints[partA], handRightPoints[partB], colors[count], 10)
+                    cv2.circle(frame, handRightPoints[partA], 5, (0, 0, 255), thickness=3, lineType=cv2.FILLED)
+                    cv2.circle(frame, handRightPoints[partB], 5, (255, 255, 255), thickness=4, lineType=cv2.FILLED)
+                count+=1
+                
+        
+        count=0
+        for pair in HAND_PAIRS:
+            partA = pair[0]
+            partB = pair[1]
+        
+            if handLeftPoints[partA] and handLeftPoints[partB]:
+                
+                if color == 'White':
+                    cv2.line(frame, handLeftPoints[partA], handLeftPoints[partB], colors[count], 10)
+                    cv2.circle(frame, handLeftPoints[partA], 5, colors[count], thickness=10, lineType=cv2.FILLED)
+                    cv2.circle(frame, handLeftPoints[partB], 15, (0,0,0), thickness=5, lineType=-1)
+                    
+                else:
+                    cv2.line(frame, handLeftPoints[partA], handLeftPoints[partB], colors[count], 10)
+                    cv2.circle(frame, handLeftPoints[partA], 5, (0, 0, 255), thickness=3, lineType=cv2.FILLED)
+                    cv2.circle(frame, handLeftPoints[partB], 5, (255, 255, 255), thickness=4, lineType=cv2.FILLED)
+                count+=1
+        
+        
+        frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+        
+        fig2 = plt.figure(figsize = (10,10)) # create a 20 x 20 figure 
+        ax3 = fig2.add_subplot(111)
+        ax3.imshow(frame, interpolation='none')
+        
+        plt.imshow(frame)
+        mpld3.show()
 
 
 
-
-
-
+plotPoseDataset()
 
 
 

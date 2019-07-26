@@ -119,7 +119,7 @@ for x in range(len(fileNames)):
     RightConfidence = helper.confidence(RightConfPoints)
     LeftConfidence = helper.confidence(LeftConfPoints)
     # remove file if confidence is less than threshold
-    if RightConfidence < 12:
+    if RightConfidence < 10:
         os.remove('Keypoints_temp\\' + fileNames[x])
         
     elif LeftConfidence < conf_thershold and LeftConfidence > 2 :

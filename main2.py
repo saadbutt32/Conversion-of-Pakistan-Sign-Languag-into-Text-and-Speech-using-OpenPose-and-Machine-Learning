@@ -60,7 +60,7 @@ def openpose():
     """
     print('Starting OpenPose')
     os.chdir('openpose')
-    p = subprocess.Popen('bin\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
+    p = subprocess.Popen('build\\x64\\Release\\OpenPoseDemo.exe --hand  --write_json ..\\Keypoints --net_resolution 128x128  --number_people_max 1', shell=True)
     os.chdir('..')
     
     """
@@ -107,7 +107,7 @@ def match():
         return label
         
 
-eel.start('main.html',size=(1000,600))
+eel.start('main.html',size=(1920,1080))
 
 label=""
 while True:

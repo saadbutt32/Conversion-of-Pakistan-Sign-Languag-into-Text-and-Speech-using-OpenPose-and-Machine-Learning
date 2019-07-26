@@ -92,7 +92,7 @@ model.add(Dense(16, activation='relu'))
 
 
 # Add an output layer 
-model.add(Dense(2, activation='sigmoid'))
+model.add(Dense(9, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
