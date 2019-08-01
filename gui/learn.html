@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pakistan Sign Laguage Interpreter</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="/eel.js"></script>
+
+    <style>
+         img {
+          opacity: 0;
+          filter: alpha(opacity=0);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container-fluid" style="margin-left: 30px">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="wellcome-heading col-md-12">
+                        <h2>Sign Detection <img src="images/recog.png" width="650" height="50">
+                        <a href="main.html"><input type="image" src="images/back.png" alt="Submit" onclick="exit_openpose()" width="80" height="75"></a></h2>
+                        <h3>Sign Language</h3>
+                        <p>Detect Sign Language using Simple WebCam</p>
+                    </div>
+                    <div class="row" style="margin-left:0px;margin-top: 50px">
+                        <div class="get-start-area col-md-4" style="margin-top:10px;">
+                            <div class="row" style="margin-top:20px">
+                                    <div class="get-start-area col-md-4">
+                                         <input type="button" class="submit" value="Start learning" onclick="startLearning()"><br>
+                                    </div>
+                                 
+                            </div>
+                            <input type="image" id="alphabet" src="images/alphabet/1.png" alt="Submit" style="text-align: left" width="250" height="auto">
+
+                    </div>
+                           <div class="row-md-8"  style="margin-bottom:20px;margin-top: -40px;text-align: center" >
+                               
+                               <input type="image" id="live" src="images/BLACK_background.jpg" alt="Submit" width="550" height="350"><br>
+                               <input type="image" id="status" src="" alt="Submit" width="80" height="100" style="opacity: 0;
+                               filter: alpha(opacity=0);">
+                               <div class="get-start-area row-md-4" style="margin-bottom:20px;text-align: left">
+                                   <input type="button" class="submit" value="Skip Sign" onclick="skip_Sign()">
+                               </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+             <script type="text/javascript">
+                var i = 0;
+
+                function skip_Sign()
+                {   console.log("skip_sign")
+                    eel.skip_Sign();
+                }
+
+                eel.expose(get_Alphabet);
+                function get_Alphabet(a)
+                {
+                    document.getElementById("alphabet").src="images/alphabet/"+ (a) +".png";
+                    document.getElementById("status").src="images/bad.png";
+                    console.log(a);
+                }
+
+                eel.expose(get_fileName);
+                function get_fileName(a)
+                {
+                    document.getElementById("live").src="Learn_images/"+ (a) +".jpg";
+                    console.log(a);
+                }
+
+                eel.expose(get_status);
+                function get_status()
+                {
+                    return true
+                }
+
+
+
+                eel.openposelearn();
+                function startLearning(){
+                    eel.learning()();
+                    get_fileName();
+
+                    
+                    if(get_status() == true)
+                    {
+                        console.log(get_status())
+                        document.getElementById("status").src="images/good.png";
+                        get_Alphabet();
+                    }
+
+                    i++;
+
+                    //setTimeout(startLearning, 500);
+
+                }
+                
+                function exit_openpose()
+                  {
+                     eel.exit_openpose()();
+                  }
+            </script>
+        </div>
+        <div class="welcome-thumb">
+            <img id="sign" src="" width="60%">
+        </div>
+    </section>
+</body>
+</html>

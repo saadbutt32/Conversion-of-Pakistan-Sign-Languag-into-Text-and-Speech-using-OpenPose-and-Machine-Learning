@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pakistan Sign Laguage Interpreter</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="/eel.js"></script>
+
+    <style>
+        img {
+          opacity: 0;
+          filter: alpha(opacity=0);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container-fluid" style="margin-left: 30px">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="wellcome-heading col-md-12">
+                        <h2>Sign Detection <img src="images/recog.png" width="650" height="50">
+                        <a href="main.html"><input type="image" src="images/back.png" alt="Submit"  hspace="20" width="80" height="75"></a></h2>
+                        <h3>Sign Language</h3>
+                        <p>Detect Sign Language using Simple WebCam</p>
+                    </div>
+                    <div class="row" style="margin-left:0px;margin-top: 50px">
+                        
+                        <div class="get-start-area col-md-4" style="margin-top:10px;">
+                            <div class="custom-control custom-checkbox mr-sm-2" style="margin-bottom:20px;margin-top: -30px">
+                                    <input type="checkbox" class="custom-control-input" checked id="customControlAutosizing">
+                                    <label class="custom-control-label" for="customControlAutosizing" style="color:white">Enable Speech</label>
+                            </div>   
+                            <label style="color:white; font-weight: 600"></label>
+                            
+                            <label style="color:white; font-weight: 600">Text Output</label>
+                            <textarea class="form-control" readonly rows="4" cols="50" id="label" style="text-align: right;font-size: 28px;width: 500px;height: 100px;">
+                                    م‬ی‬ر‬ا ن‬ام‬                           </textarea>
+                            <div class="row" style="margin-top:20px">
+                                    <div class="get-start-area col-md-4">
+                                        <input type="button" class="submit" value="Start OpenPose" onclick="startOpenpose()">
+                                    </div>
+                                    <div class="get-start-area col-md-4">
+                                        <input type="button" class="submit" value="Start Detection" onclick="startDetection()">
+                                    </div>
+                                </div>
+                            <script type="text/javascript">                                
+                                    async function startDetection(){
+                                    let val = await eel.match()();
+                                    console.log(val);
+                                    var par = document.getElementById("label");
+                                    par.innerText = val ;
+                                    setTimeout(startDetection, 1000);
+                                    }
+    
+                                    function startOpenpose()
+                                    {
+                                        eel.openpose()();
+                                    }
+    
+                            </script>
+                        </div>
+                        <div class="col-md-8"  style="margin-bottom:20px;margin-top: -30px;text-align: center" >
+                            
+                            <video autoplay="true" id="videoElement" style="width: 500px; height: 375px;background-color: #666;border: 3px rgb(209, 209, 209) solid;">
+                                
+                            </video>
+                            <div style="margin-bottom:20px;text-align: center" dir="rtl">
+                                    <h1 id="label"  style="color:white"><label>Output :&nbsp </label>ب</h1>
+                            </div> 
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="welcome-thumb">
+            <img id="sign" src="" width="60%">
+        </div>
+    </section>
+    <script type="text/javascript">
+        var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+            video.srcObject = stream;
+            })
+            .catch(function (err0r) {
+            console.log("Something went wrong!");
+            });
+        }
+    </script>
+</body>
+</html>

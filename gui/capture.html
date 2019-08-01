@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pakistan Sign Laguage Interpreter</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="#" />
+    <script type="text/javascript" src="/eel.js"></script>
+
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container-fluid" style="margin-left: 30px">
+            <div class="row">
+                <div class=" wellcome-heading col-md-6">
+                    <h2>Capture New Data </h2>
+                    <p>Extend PSL dataset by capturing new data</p>
+                    <h3>Pakistan Sign Language</h3>
+                </div>
+                <div class="col-md-6" >
+                    <a href="main.html" style="float:right; margin-right: 100px"><input type="image" src="images/back.png" alt="Submit"  hspace="20" width="80" height="75"></a>
+                </div>
+            </div>            
+                        
+            <div class="row" style="margin-left:0px;margin-top: 50px">
+                
+                <div class="get-start-area col-md-4" style="margin-top:10px;">
+                    <div class="custom-control custom-checkbox mr-sm-2" style="margin-bottom:20px;margin-top: 30px">
+                            <input style="width: 20px; height: 20px;" type="checkbox"  id="myCheck" >
+                            <label  style="color:white; ">Word Mode</label>
+                    </div> 
+
+                    <div class="row" style="margin-top:20px">
+                            <div class="get-start-area row-md-4">
+                                <label style="color:white; font-weight: 600">Enter Duration of Capture :</label>
+                                <input type="text" placeholder="Seconds" id="sec"></input>
+                                <input class="submit" id="start" type="button" value="Start Capture" onclick="capture_dataset()">
+                                <input class="submit" data-toggle="modal" id="images" data-target="#myModal"  type="button" onclick="make_elements()" value="Select Images">
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-8"  style="margin-bottom:20px;margin-top: -100px;text-align: center" >
+
+                    <input type="image" id="live" src="" alt="Submit" width="550" height="350"><br>
+
+                </div>
+
+            </div>
+                   <br><br> <div class="get-start-area row-md-4">
+                        <input class="submit" id="as" type="button" value="Retrain Model" onclick="train()">
+                    </div>
+        </div>
+            
+        <div class="welcome-thumb">
+            <img id="sign" src="" width="60%">
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float:left">Captured Images</h4>
+                <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Select Images to Delete</h1>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row text-center text-lg-left" id="getimages">
+
+                </div>
+                    
+                </div>
+                <div class="col-md-6">
+                        <label style="color:balck; font-weight: 600">Enter Urdu Label :</label>
+                        <input id="label" class="form-control" ></input>
+                    <input class="submit" type="button" value="Enter" onclick="get_label()">
+                </div>
+            </div>
+
+            <div class="modal-footer ">
+
+            </div>
+            </div>
+        
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        
+        
+      
+      //window.onload=function()
+      async function make_elements()  
+      {
+          console.log("in make_elements()")
+          let count = await eel.getFileCount()();
+          console.log("count")
+          console.log(count)
+          var output = document.getElementById('getimages');
+          var i=1;
+          var val="";
+          while(i<=count)
+          {
+    
+            if(!document.getElementById(i))
+            {
+            
+              var div = document.createElement("div");
+              div.setAttribute("id",i);
+              div.setAttribute("class","col-md-4");
+    
+              var image = document.createElement("img");
+              image.setAttribute("id","img"+i);
+              image.setAttribute("src","captured_images/"+ i +".jpg");
+              image.setAttribute("height","150px");
+              image.setAttribute("width","150px");
+    
+              var input = document.createElement("input");
+              input.setAttribute("type", "Button");
+              input.setAttribute("value", "Delete");
+              input.setAttribute("class", "submit");
+              input.setAttribute("onclick", "delete_image("+ i +")");
+              input.setAttribute("id", i);
+              output.appendChild(div);
+              div.appendChild(image);
+              div.appendChild(input);
+    
+            }
+            i++;
+          }
+        };
+
+    var checkBox = document.getElementById("myCheck");
+
+    function capture_dataset()
+    {
+       var a= parseInt(document.getElementById("sec").value);
+       if (checkBox.checked == true)
+        {
+            eel.capture_word_dataset(a);
+
+        }
+       else
+        {
+            eel.capture_alphabet_dataset(a);
+        }
+
+    }
+
+
+    function delete_image(i)
+    {
+        /*var input_id = document.getElementById(i);
+        var image_id = input_id.getElementsByTagName("img")[0];
+        var src = image_id.src;*/
+        
+        console.log("in delete_image()")
+        eel.delete_Image(i)();
+    }
+
+
+    function get_label()
+    {
+        console.log("in get_label()")
+        var b = document.getElementById("label").value;
+        eel.getlabel(b);
+        
+
+    }
+
+    function train()
+    {
+        console.log("in train()")
+       if (checkBox.checked == true)
+        {
+            eel.db_word_train()();
+
+        }
+       else
+        {
+            eel.db_train()();
+        }
+
+    }
+
+    eel.expose(get_fileName);
+    function get_fileName(a)
+    {
+        document.getElementById("live").src="temp_images/"+ (a) +".jpg";
+    }
+    
+
+
+    </script>
+</body>
+</html>
