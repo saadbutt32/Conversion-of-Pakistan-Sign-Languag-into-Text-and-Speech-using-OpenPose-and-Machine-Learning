@@ -8,7 +8,7 @@ The University of Lahore (Department of CS & IT) (Fall 2015 – Spring 2019) - F
 
 ## Dependencies
 ##### The system uses OpenPose library for extacting skelatal features.
-##### The code was developed with python 3.5 and has been tested with the libraries/versions in requirements.txt file.
+##### The code was developed with python 3.7 and has been tested with the libraries/versions in requirements.txt file.
 
 ## Dataset Used
 We have made our own Pakistan Sign Language (PSL) dataset containing multiple samples of 37 urdu aplhabets and 12 urdu words. The dataset is made publically available at https://www.kaggle.com/saadbutt321/pakistan-sign-language-dataset
