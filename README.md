@@ -1,5 +1,5 @@
 # Conversion of Pakistan Sign Language into text and speech using Machine Learning
-The University of Lahore (Department of CS & IT) (Fall 2015 – Spring 2019) - Final Year Project
+[The University of Lahore (Department of CS & IT)](https://cs.uol.edu.pk/) (Fall 2015 – Spring 2019) - Final Year Project
 
 #### The project is divided into 3 main modules
 - RealTime sign detection module - translating Pakistan Sign Language (PSL) alphabet and words into text and speech in realtime.
