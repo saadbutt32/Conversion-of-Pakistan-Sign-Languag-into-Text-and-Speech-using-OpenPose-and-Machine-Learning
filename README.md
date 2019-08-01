@@ -1,8 +1,14 @@
 # Conversion of Pakistan Sign Language into text and speech using Machine Learning
 [The University of Lahore (Department of CS & IT)](https://cs.uol.edu.pk/) (Fall 2015 – Spring 2019) - Final Year Project
 
+#### Supervised by:
+[Dr. Muasser Naseer](https://faculty.uol.edu.pk/Faculty/9381/Dr%20Mudasser%20Naseer)
+#### Group Members
+- Muhammad Junaid Ejaz
+- Muhammad Saad Qadri
+
 #### The project is divided into 3 main modules
-- RealTime sign detection module - translating Pakistan Sign Language (PSL) alphabet and words into text and speech in realtime.
+- RealTime sign detection module - convert Pakistan Sign Language (PSL) alphabet and words into text and speech in realtime.
 - Capture Dataset modeule - Automated system for capturing and adding new data to the dataset
 - PSl learning module - Learn PSL interactively
 
