@@ -1,9 +1,9 @@
 # Conversion of Pakistan Sign Language into text and speech using Machine Learning
 [The University of Lahore (Department of CS & IT)](https://cs.uol.edu.pk/) (Fall 2015 – Spring 2019) - Final Year Project
 
-#### Supervised by:
+##### Supervised by:
 [Dr. Muasser Naseer](https://faculty.uol.edu.pk/Faculty/9381/Dr%20Mudasser%20Naseer)
-#### Group Members
+##### Group Members
 - Muhammad Junaid Ejaz
 - Muhammad Saad Qadri
 
