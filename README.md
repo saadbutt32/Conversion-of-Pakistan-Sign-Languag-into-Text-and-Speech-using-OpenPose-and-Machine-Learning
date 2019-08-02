@@ -13,7 +13,7 @@
 - PSl learning module - Learn PSL interactively
 
 ## Dependencies
-##### The system uses OpenPose library for extacting skelatal features.
+##### The system uses [OpenPose v1.5.0](https://github.com/CMU-Perceptual-Computing-Lab/openpose/releases) library for extacting skelatal features.
 ##### The code was developed with python 3.7 and has been tested with the libraries/versions in requirements.txt file.
 
 ## Dataset Used
