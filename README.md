@@ -9,7 +9,7 @@
 
 #### The project is divided into 3 main modules
 - RealTime sign detection module - convert Pakistan Sign Language (PSL) alphabet and words into text and speech in realtime.
-- Capture Dataset modeule - Automated system for capturing and adding new data to the dataset
+- Capture Dataset module - Automated system for capturing and adding new data to the dataset
 - PSl learning module - Learn PSL interactively
 
 ## Dependencies
