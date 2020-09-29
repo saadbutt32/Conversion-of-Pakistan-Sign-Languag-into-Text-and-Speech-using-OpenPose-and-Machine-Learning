@@ -17,7 +17,7 @@ Keras-Preprocessing==1.0.9
 lxml==4.3.2
 matplotlib==3.0.3
 mccabe==0.6.1
-mkl-fft==1.0.0
+mkl-fft
 mkl-random==1.0.1
 mpi4py==2.0.0
 mpld3==0.3
